@@ -11,7 +11,7 @@ if [ "$1" = "reset" ];  then  rm -rf $VENV;  fi
 
 if [ ! -d "$VENV" ]; then
   python -m venv "$VENV"
-  echo "$DIR/$VENV/**" > .gitignore
+  echo "$VENV/**" > .gitignore
 
   source $VENV/bin/activate
   pip install -r requirements.txt
