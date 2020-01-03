@@ -1,0 +1,20 @@
+#!/bin/sh
+
+VENV="virtualenv"
+
+git config --local user.name "swift.gathering"
+git config --local user.email "swift.gathering@gmail.com"
+git config --local credential.helper store
+
+
+if [ "$1" = "reset" ];  then  rm -rf $VENV;  fi
+
+if [ ! -d "$VENV" ]; then
+  python -m venv "$VENV"
+  echo "$DIR/$VENV/**" > .gitignore
+
+  source $VENV/bin/activate
+  pip install -r requirements.txt
+else
+  source $VENV/bin/activate
+fi
